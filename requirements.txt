@@ -1,0 +1,4 @@
+torch>=2.2
+easyocr>=1.7        # берём из него архитектуру CRNN и веса cyrillic_g2
+pillow>=10.0
+numpy>=1.26
