@@ -62,9 +62,13 @@ def main():
                     help="заморозить свёрточную часть: учится только чтение "
                          "последовательности, а признаки остаются прежними")
     ap.add_argument("--out", default=str(OUT))
+    ap.add_argument("--init", default=None,
+                    help="начать не с готовой модели easyocr, а с уже дообученных "
+                         "весов: так новый набор записей добавляется к чертёжному "
+                         "шрифту, а не стирает его")
     a = ap.parse_args()
     epochs, per_epoch = a.epochs, a.rows
-    model, conv = build()
+    model, conv = build(a.init)
     if a.freeze:
         for p_ in model.FeatureExtraction.parameters():
             p_.requires_grad = False
