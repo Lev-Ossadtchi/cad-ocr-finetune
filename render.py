@@ -14,8 +14,11 @@ import random
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from pathlib import Path
 
-FONT = "assets/osifont.ttf"
+# Путь абсолютный: скрипт вызывают и из других папок, а относительный путь
+# ищет шрифт в рабочем каталоге вызывающего и падает «cannot open resource».
+FONT = str(Path(__file__).parent / "assets" / "osifont.ttf")
 H = 64                      # высота вырезки, как её ждёт распознаватель
 PAD = 6
 
